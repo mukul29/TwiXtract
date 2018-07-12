@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="pie_logo">
+    <file>pie_logo.svg</file>
+  </qresource>
+</RCC>

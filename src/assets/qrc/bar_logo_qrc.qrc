@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="bar_logo">
+    <file>bar_logo.png</file>
+  </qresource>
+</RCC>

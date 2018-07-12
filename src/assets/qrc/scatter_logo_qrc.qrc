@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="scatter_logo">
+    <file>scatter_logo.png</file>
+  </qresource>
+</RCC>

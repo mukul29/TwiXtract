@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>749</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>TwiXtract</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Yu Gothic</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::DefaultContextMenu</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Live Tweets</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0" colspan="3">
+         <widget class="QGroupBox" name="groupBoxLiveTweets">
+          <property name="title">
+           <string>Stream Live Tweets for certain Hashtags</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="0" column="0">
+            <widget class="QLabel" name="labelHashtags">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Enter Hashtags (Seperated by commas):</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="lineEditLiveHashtags">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="labelLiveStreamStatus">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Idle</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="lineEditLiveNumTweets">
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QPushButton" name="pushButtonLiveStream">
+             <property name="font">
+              <font>
+               <family>Sans Serif</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Start Streaming</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="2">
+            <widget class="QPushButton" name="pushButtonLiveShowDataframe">
+             <property name="font">
+              <font>
+               <family>Tahoma</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+               <underline>false</underline>
+              </font>
+             </property>
+             <property name="text">
+              <string>Show Dataframe</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="labelLiveTweetsNumber">
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Enter Number of Tweets to Fetch:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="2">
+            <widget class="QPushButton" name="pushButtonLiveMakeCsv">
+             <property name="text">
+              <string>Save Dataframe to CSV File</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0" colspan="2">
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QLabel" name="labelLiveLanguagesBar">
+               <property name="maximumSize">
+                <size>
+                 <width>80</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="../assets/qrc/bar_logo_qrc.qrc">:/bar_logo/bar_logo.png</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButtonLiveLanguagesBar">
+               <property name="text">
+                <string>Top Languages Bar Chart</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="labelLiveSourcesBar">
+               <property name="maximumSize">
+                <size>
+                 <width>80</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="../assets/qrc/bar_logo_qrc.qrc">:/bar_logo/bar_logo.png</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButtonLiveSourcesBar">
+               <property name="text">
+                <string>Top Sources</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="8" column="0" colspan="2">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="labelLiveScatter">
+               <property name="maximumSize">
+                <size>
+                 <width>80</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="../assets/qrc/scatter_logo_qrc.qrc">:/scatter_logo/scatter_logo.png</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButtonLiveScatter">
+               <property name="text">
+                <string>Retweets vs. Sentiment</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="labelLiveSentimentPie">
+               <property name="maximumSize">
+                <size>
+                 <width>80</width>
+                 <height>80</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="../assets/qrc/pie_logo_qrc.qrc">:/pie_logo/pie_logo.svg</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButtonLiveSentimentPie">
+               <property name="text">
+                <string>Sentiment</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>User Tweets</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="labelUserLanguagesBar">
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>80</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../assets/qrc/bar_logo_qrc.qrc">:/bar_logo/bar_logo.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonUserLanguagesBar">
+            <property name="text">
+             <string>Top Languages Bar Chart</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelUserSourcesBar">
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>80</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../assets/qrc/bar_logo_qrc.qrc">:/bar_logo/bar_logo.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonUserSourcesBar">
+            <property name="text">
+             <string>Top Sources</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBoxUserTweets">
+          <property name="font">
+           <font>
+            <family>Nirmala UI</family>
+            <weight>50</weight>
+            <bold>false</bold>
+            <underline>false</underline>
+           </font>
+          </property>
+          <property name="title">
+           <string>Fetch Tweets for a Particular User</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="2" column="0">
+            <widget class="QPushButton" name="pushButtonUserStream">
+             <property name="font">
+              <font>
+               <family>Sans Serif</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+               <underline>false</underline>
+              </font>
+             </property>
+             <property name="text">
+              <string>Start Streaming</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="labelUsername">
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+               <underline>false</underline>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="text">
+              <string>Enter Username:</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="lineEditUsername">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="labelUserNumTweets">
+             <property name="text">
+              <string>Enter Number of Tweets to Fetch:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="lineEditUserNumTweets">
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="labelUserStreamStatus">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Idle</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" colspan="2">
+            <widget class="QPushButton" name="pushButtonUserMakeCsv">
+             <property name="text">
+              <string>Save Dataframe to CSV file</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" colspan="2">
+            <widget class="QPushButton" name="pushButtonUserShowDataframe">
+             <property name="font">
+              <font>
+               <family>Tahoma</family>
+               <pointsize>10</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+               <underline>false</underline>
+              </font>
+             </property>
+             <property name="text">
+              <string>Show Dataframe</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QLabel" name="labelUserScatter">
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>80</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../assets/qrc/scatter_logo_qrc.qrc">:/scatter_logo/scatter_logo.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonUserScatterPlot">
+            <property name="text">
+             <string>Retweets Vs. Sentiment</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelUserSentimentPie">
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>80</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../assets/qrc/pie_logo_qrc.qrc">:/pie_logo/pie_logo.svg</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonUserSentimentPie">
+            <property name="text">
+             <string>Sentiment</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Compare tweets</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>749</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionQuit">
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>lineEditLiveHashtags</tabstop>
+  <tabstop>lineEditLiveNumTweets</tabstop>
+  <tabstop>pushButtonLiveStream</tabstop>
+  <tabstop>pushButtonLiveShowDataframe</tabstop>
+  <tabstop>pushButtonLiveMakeCsv</tabstop>
+  <tabstop>pushButtonLiveLanguagesBar</tabstop>
+  <tabstop>pushButtonLiveSourcesBar</tabstop>
+  <tabstop>pushButtonLiveScatter</tabstop>
+  <tabstop>pushButtonLiveSentimentPie</tabstop>
+  <tabstop>lineEditUsername</tabstop>
+  <tabstop>lineEditUserNumTweets</tabstop>
+  <tabstop>pushButtonUserStream</tabstop>
+  <tabstop>pushButtonUserShowDataframe</tabstop>
+  <tabstop>pushButtonUserMakeCsv</tabstop>
+  <tabstop>pushButtonUserLanguagesBar</tabstop>
+  <tabstop>pushButtonUserSourcesBar</tabstop>
+  <tabstop>pushButtonUserScatterPlot</tabstop>
+  <tabstop>pushButtonUserSentimentPie</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../assets/qrc/bar_logo_qrc.qrc"/>
+  <include location="../assets/qrc/pie_logo_qrc.qrc"/>
+  <include location="../assets/qrc/scatter_logo_qrc.qrc"/>
+ </resources>
+ <connections/>
+</ui>
