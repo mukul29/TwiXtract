@@ -54,61 +54,65 @@ class PresentUserData:
 		if not self.tweets_list:
 			return
 		for tweet_dict in self.tweets_list:
-			tweet_converted_dict = {
-					'id': tweet_dict['id'],
-					'date': tweet_dict['created_at'],
-					'username': tweet_dict['user']['screen_name'],
-					'text': tweet_dict['text'],
-					'lang': tweet_dict['lang']
-				}
 			try:
-				tweet_converted_dict['retweet_count'] = int(tweet_dict['retweeted_status']['retweet_count'])
-			except KeyError:
-				tweet_converted_dict['retweet_count'] = 0
-			
-			"""	
-			Keeping count of no of users using each platform to post tweets
-			"""
-			tweet_source = tweet_dict['source']
+				tweet_converted_dict = {
+						'id': tweet_dict['id'],
+						'date': tweet_dict['created_at'],
+						'username': tweet_dict['user']['screen_name'],
+						'text': tweet_dict['text'],
+						'lang': tweet_dict['lang']
+					}
+				try:
+					tweet_converted_dict['retweet_count'] = int(tweet_dict['retweeted_status']['retweet_count'])
+				except KeyError:
+					tweet_converted_dict['retweet_count'] = 0
+				
+				"""	
+				Keeping count of no of users using each platform to post tweets
+				"""
+				tweet_source = tweet_dict['source']
 
-			if re.search('web', tweet_source, re.IGNORECASE):
-				self.web_user_count += 1
-				tweet_converted_dict['source'] = 'web'
+				if re.search('web', tweet_source, re.IGNORECASE):
+					self.web_user_count += 1
+					tweet_converted_dict['source'] = 'web'
 
-			elif re.search('android', tweet_source, re.IGNORECASE):
-				self.android_user_count += 1
-				tweet_converted_dict['source'] = 'android'
+				elif re.search('android', tweet_source, re.IGNORECASE):
+					self.android_user_count += 1
+					tweet_converted_dict['source'] = 'android'
 
-			elif re.search('iphone', tweet_source, re.IGNORECASE):
-				self.iphone_user_count += 1
-				tweet_converted_dict['source'] = 'iphone'
+				elif re.search('iphone', tweet_source, re.IGNORECASE):
+					self.iphone_user_count += 1
+					tweet_converted_dict['source'] = 'iphone'
 
-			else:
-				tweet_converted_dict['source'] = 'others'
-				self.others_user_count += 1
-
-			"""
-			Finding the sentiment value and determining whether its positive, negative or neutral
-			"""
-			
-			if tweet_dict['lang'] == 'en':
-				tweet_sentiment_value = TextBlob(tweet_dict['text']).sentiment.polarity
-				tweet_converted_dict['sentiment_value'] = tweet_sentiment_value
-				if tweet_sentiment_value > 0:
-					tweet_converted_dict['sentiment'] = 'Positive'
-					self.count_positive_sentiment += 1
-				elif tweet_sentiment_value == 0:
-					tweet_converted_dict['sentiment'] = 'Neutral'
-					self.count_neutral_sentiment += 1
 				else:
-					tweet_converted_dict['sentiment'] = 'Negative'
-					self.count_negative_sentiment += 1
-			else:
-				tweet_sentiment_value = None
-				tweet_converted_dict['sentiment_value'] = None
-				tweet_converted_dict['sentiment'] = None
+					tweet_converted_dict['source'] = 'others'
+					self.others_user_count += 1
 
-			self.tweets_converted_list.append(tweet_converted_dict)
+				"""
+				Finding the sentiment value and determining whether its positive, negative or neutral
+				"""
+				
+				if tweet_dict['lang'] == 'en':
+					tweet_sentiment_value = TextBlob(tweet_dict['text']).sentiment.polarity
+					tweet_converted_dict['sentiment_value'] = tweet_sentiment_value
+					if tweet_sentiment_value > 0:
+						tweet_converted_dict['sentiment'] = 'Positive'
+						self.count_positive_sentiment += 1
+					elif tweet_sentiment_value == 0:
+						tweet_converted_dict['sentiment'] = 'Neutral'
+						self.count_neutral_sentiment += 1
+					else:
+						tweet_converted_dict['sentiment'] = 'Negative'
+						self.count_negative_sentiment += 1
+				else:
+					tweet_sentiment_value = None
+					tweet_converted_dict['sentiment_value'] = None
+					tweet_converted_dict['sentiment'] = None
+
+				self.tweets_converted_list.append(tweet_converted_dict)
+			except KeyError:
+				print("Getting rate limited")
+				continue
 		
 		# # # Making the dataframe # # #
 		self.df = pd.DataFrame(self.tweets_converted_list)
