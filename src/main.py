@@ -7,7 +7,6 @@ import re
 import os
 import tweepy
 
-
 # # # Importing my modules # # #
 from ui_py.main_window import Ui_MainWindow
 from py import *
@@ -38,7 +37,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 		# # # Handling save to csv push button # # #
 		self.pushButtonLiveMakeCsv.clicked.connect(self.live_make_csv)
 		
-
 		# # # Quit Action # # #
 		self.actionQuit.triggered.connect(self.close_application)	
 		
@@ -56,8 +54,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 		# # # Save to csv push button # # #
 		self.pushButtonUserMakeCsv.clicked.connect(self.user_make_csv)
-
-
 
 		# # # Handling user show dataframe pushbutton # # #
 		self.presentUserData = twitter_extract_user_data.PresentUserData(user_tweets_filepath)
@@ -96,7 +92,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 		except:
 			print("Cancelled")
 
-
 	def onStartUserStream(self):
 		try:
 
@@ -106,8 +101,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 			pass
 
 		self.presentUserData.clear_data()
-
-
 		self.labelUserStreamStatus.setText('Fetching tweets')
 		self.workerThreadUser.start()
 		self.status = 1
@@ -158,7 +151,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 	def show_live_sentiment(self):
 		self.presentLiveData.sentiment_pie()
 	
-		
 	def live_make_csv(self):
 		try:
 			name = QtWidgets.QFileDialog.getSaveFileName(self, 'Save File', ".csv", "CSV files (*.csv)")
@@ -180,8 +172,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 		else:
 			pass
 
-
-
 	def closeEvent(self, event):
 		if self.status == 0:
 			choice = QtWidgets.QMessageBox.question(self, 'Exit', 'Exit the Application', 
@@ -198,7 +188,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 	def live_tweets_dataframe(self):
 		self.presentLiveData.show_dataframe()
-
 
 	def onStartLiveStream(self):
 		try:
@@ -230,7 +219,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 		print(hashtags)
 		return hashtags
 		
-	
 	def get_live_num_tweets(self):
 		num_tweets = self.lineEditLiveNumTweets.text()
 		num_tweets = num_tweets.strip(' ')
@@ -248,8 +236,6 @@ class WorkerThreadLive(QtCore.QThread):
 	taskFinishedLive = QtCore.pyqtSignal()
 
 	def run(self):
-		
-		
 		# # Getting hashtags from the user # #
 		try:
 			hashtags = window.get_live_hashtags()
@@ -267,7 +253,6 @@ class WorkerThreadLive(QtCore.QThread):
 			print("Not a valid number")
 			return
 
-
 		twitterStreamer = tweepy_streamer.TwitterStreamer()
 		try:
 			twitterStreamer.stream_tweets(live_tweets_filepath, hashtags, num_tweets)
@@ -277,13 +262,9 @@ class WorkerThreadLive(QtCore.QThread):
 			window.labelLiveStreamStatus.setText("")
 		self.taskFinishedLive.emit()
 
-
 class WorkerThreadUser(QtCore.QThread):
 	taskFinishedUser = QtCore.pyqtSignal()
-
 	def run(self):
-		
-		
 		# # Getting hashtags from the user # #
 		try:
 			username = window.get_user_username()
@@ -301,7 +282,6 @@ class WorkerThreadUser(QtCore.QThread):
 			print("Not a valid number")
 			return
 		
-
 		twitterClient = tweepy_client.TwitterClient(user_tweets_filepath, username)
 		try:
 			twitterClient.get_user_timeline_tweets(num_tweets)
